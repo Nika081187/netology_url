@@ -25,11 +25,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.setMinimumBackgroundFetchInterval(
           UIApplication.backgroundFetchIntervalMinimum)
         
+        NetworkService.dataTask(config: .planets) { string in
+            if let result = string {
+                print("result: \(result)")
+            }
+        }
+        
+        NetworkService.dataTaskRequest(httpMethod: .get, config: .people) { string in
+            if let result = string {
+                print("result request: \(result)")
+            }
+        }
+        
         return true
-    }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        //
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
