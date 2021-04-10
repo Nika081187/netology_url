@@ -78,10 +78,6 @@ class MyTabBarController: UIViewController, UITabBarDelegate {
     }
     
     func updateUI() {
-      guard updateLabel != nil  else {
-        return
-      }
-      
       if let time = time {
         updateLabel.text = dateFormatter.string(from: time)
       } else {
